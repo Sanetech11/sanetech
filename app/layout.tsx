@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { arimo, switzer } from "./fonts";
 import { BUSINESS_INFO } from "@/lib/seo/business-info";
 import "../styles/globals.css";
+import Script from "next/script";
 
 const SITE_URL = BUSINESS_INFO.url;
 
@@ -81,6 +82,13 @@ export default function RootLayout({
         </a>
         {children}
         <Analytics />
+                <Script src="https://www.googletagmanager.com/gtag/js?id=G-M2GMETVW8N" strategy="afterInteractive" />
+        <Script id="ga4" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-M2GMETVW8N');`}
+        </Script>
       </body>
     </html>
   );
